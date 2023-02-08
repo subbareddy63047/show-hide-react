@@ -4,34 +4,47 @@ import {Component} from 'react'
 import './index.css'
 
 class ShowHide extends Component {
-  state = {value1: 'none', value2: 'none', count1: 0, count2: 0}
+  state = {count1: 0, count2: 0}
 
-  addContainer1 = () => {
-    const {count1} = this.state
-    this.setState(prevState => ({
-      count1: prevState.count1 + 1,
-    }))
-    if (count1 % 2 !== 0) {
-      this.setState({value1: 'block'})
-    } else {
-      this.setState({value1: 'none'})
-    }
+  container1 = () => {
+    this.setState(prevState => ({count1: prevState.count1 + 1}))
   }
 
-  addContainer2 = () => {
-    const {count2} = this.state
+  subbu = () => {
+    const {count1} = this.state
+    console.log(count1)
+    let abc
+    if (count1 % 2 !== 0) {
+      return (
+        <div className="buttons-column">
+          <p className="para">Joe</p>
+        </div>
+      )
+    }
+    return abc
+  }
+
+  container2 = () => {
     this.setState(prevState => ({
       count2: prevState.count2 + 1,
     }))
+  }
+
+  subbu1 = () => {
+    const {count2} = this.state
+    console.log(count2)
+    let abcd
     if (count2 % 2 !== 0) {
-      this.setState({value2: 'block'})
-    } else {
-      this.setState({value2: 'none'})
+      return (
+        <div className="buttons-column">
+          <p className="para">Jonas</p>
+        </div>
+      )
     }
+    return abcd
   }
 
   render() {
-    const {value1, value2} = this.state
     return (
       <div className="main-container">
         <h1 className="heading">Show/Hide</h1>
@@ -40,25 +53,21 @@ class ShowHide extends Component {
             <button
               type="button"
               className="button-1"
-              onClick={this.addContainer1}
+              onClick={this.container1}
             >
               Show/Hide Firstname
             </button>
-            <div style={{display: `${value1}`}} className="buttons-column">
-              <p className="para">Joe</p>
-            </div>
+            {this.subbu()}
           </div>
           <div className="container">
             <button
               type="button"
               className="button-2"
-              onClick={this.addContainer2}
+              onClick={this.container2}
             >
               Show/Hide Lastname
             </button>
-            <div style={{display: `${value2}`}} className="buttons-column">
-              <p className="para">Jonas</p>
-            </div>
+            {this.subbu1()}
           </div>
         </div>
       </div>
